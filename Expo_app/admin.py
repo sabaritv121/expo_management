@@ -6,3 +6,4 @@ from Expo_app import models
 admin.site.register(models.users)
 admin.site.register(models.Company)
 admin.site.register(models.Login_view)
+admin.site.register(models.OnlineForm)

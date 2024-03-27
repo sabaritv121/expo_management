@@ -47,13 +47,13 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              <span class="menu-title">Expo list</span>
+              <span class="menu-title">Stall requests</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">View</a>
+                  <a class="nav-link" href="{% url 'bookings' %}">View</a>
                 </li>
 <!--                <li class="nav-item">-->
 <!--                  <a class="nav-link" href="fuelapprove">Approve</a>-->
@@ -84,7 +84,7 @@
                   <a class="nav-link" href="{% url 'Expo_create' %}">Add</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Expo list</a>
+                  <a class="nav-link" href="{% url 'View_expo' %}">Expo list</a>
                 </li>
               </ul>
             </div>

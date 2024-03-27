@@ -45,9 +45,10 @@ class CreateExpo(models.Model):
 
 #online form submition
 class OnlineForm(models.Model):
-    user = models.ForeignKey(users, on_delete=models.CASCADE)
+    user = models.ForeignKey(Company, on_delete=models.CASCADE)
     expo_code = models.ForeignKey(CreateExpo, on_delete=models.CASCADE)
-    status = models.BooleanField(default=0)
+    status = models.IntegerField(default=0)
+    name = models.CharField(max_length=20)
 
 
 #book tickets
@@ -55,7 +56,8 @@ class BookTickets(models.Model):
     user = models.ForeignKey(users, on_delete=models.CASCADE)
     expo_code = models.ForeignKey(CreateExpo, on_delete=models.CASCADE)
     number_of_tickets = models.IntegerField()
-    status = models.BooleanField(default=0)
+    mobile = models.CharField(max_length=10,default=0000000000)
+    status = models.IntegerField(default=0)
 
 #booth allocation table
 class BoothAllocation(models.Model):

@@ -43,6 +43,10 @@
                     <td>{{n.end_date}}</td>
                      <td>{{n.expo_code}}</td>
 
+                    <td>    <a href="{% url 'take_appointment' n.id %}">
+                            <button type="button" class="btn btn-primary">Book Appointment</button>
+                        </a>
+                    </td>
 
 
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from Expo_app.models import Login_view, users, Company, CreateExpo
+from Expo_app.models import Login_view, users, Company, CreateExpo, OnlineForm
 
 
 class LoginRegister(UserCreationForm):
@@ -42,3 +42,9 @@ class ExpoForm(forms.ModelForm):
     class Meta:
         model = CreateExpo
         fields = '__all__'
+
+class OnlineFormRegister(forms.ModelForm):
+
+        class Meta:
+            model = OnlineForm
+            fields = '__all__'

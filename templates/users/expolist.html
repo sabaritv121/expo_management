@@ -20,7 +20,12 @@
                 <p class="card-text">Start Date: {{ n.start_date }}</p>
                 <p class="card-text">End Date: {{ n.end_date }}</p>
                 <p class="card-text">Expo Code: {{ n.expo_code }}</p>
-                <a href="{{ i.layout.url }}" download class="btn btn-primary">Download Layout</a>
+
+                 <p>    <a href="{% url 'take_tickets' n.id %}">
+                            <button type="button" class="btn btn-primary">Book Now</button>
+                        </a>
+                    </p>
+<!--                <a href="{{ i.layout.url }}" download class="btn btn-primary">Download Layout</a>-->
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 and not forloop.last %}
