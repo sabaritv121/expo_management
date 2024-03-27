@@ -41,6 +41,9 @@ class CreateExpo(models.Model):
     end_date = models.DateField()
     expo_code = models.CharField(max_length=6)
 
+    def __str__(self):
+        return self.expo_code
+
 
 
 #online form submition

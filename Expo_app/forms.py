@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from Expo_app.models import Login_view, users, Company, CreateExpo, OnlineForm
+from Expo_app.models import Login_view, users, Company, CreateExpo, OnlineForm, Feedback, BoothAllocation
 
 
 class LoginRegister(UserCreationForm):
@@ -48,3 +48,14 @@ class OnlineFormRegister(forms.ModelForm):
         class Meta:
             model = OnlineForm
             fields = '__all__'
+
+class FeedbackForm(forms.ModelForm):
+
+    class Meta:
+        model = Feedback
+        fields = ('feedback',)
+
+class BoothAllocationForm(forms.ModelForm):
+    class Meta:
+        model = BoothAllocation
+        fields = '__all__'

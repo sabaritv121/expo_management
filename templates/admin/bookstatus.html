@@ -4,6 +4,9 @@
 
 
 
+
+
+
 <div class="col-lg-10">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
@@ -39,24 +42,35 @@
                     <td>{{n.expo_code.start_date}}</td>
                     <td>{{n.expo_code.end_date}}</td>
                     <td>{{n.expo_code.expo_code}}</td>
-                    <td>
+                 <td>
                         {% if n.status == 0 %}
-                          <button type="button" class="btn btn-warning">Approval Pending</button>
+                        <a type="button" class="btn btn-success" href="{% url 'approve_appointment' n.id %} ">Accept</a>
+                        <form action="{% url 'reject_appointment' n.id %}" method="post" style="display: inline;"
+                              onsubmit="window.mytest()">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ n.id }}"/>
+                            <button class="btn btn-danger">Reject</Button>
+                        </form>
                         {% elif n.status == 1 %}
-                        <button type="button" class="btn btn-success">Booking Confirmed</button>
-                         {% else %}
-                        <button type="button" class="btn btn-danger">Sorry..no slots available</button>
- {% endif %}
 
+                        <button type="button" class="btn btn-success">Approved</button>
 
-
+                        {% else %}
+                        <button type="button" class="btn btn-danger">Rejected</button>
+                        {% endif %}
                     </td>
+                </tr>
 
-
-
-
+                {% empty %}
+                <tr>
+                    <td colspan="7"><h3>No Results Found</h3></td>
                 </tr>
                 {% endfor %}
+
+
+
+
+
                 </tbody>
             </table>
         </div>
@@ -64,7 +78,7 @@
 </div>
 <script type="text/javascript">
 window.mytest = function()
-{ var isValid = confirm('Are you sure Want to Delete ?');if (!isValid) { event.preventDefault();
+{ var isValid = confirm('Are you sure Want to Reject ?');if (!isValid) { event.preventDefault();
   }}
 
 

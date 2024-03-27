@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from Expo_app.models import CreateExpo, OnlineForm, users, BookTickets
+from Expo_app.forms import FeedbackForm
+from Expo_app.models import CreateExpo, OnlineForm, users, BookTickets, Feedback
 
 
 def View_expo(request):
@@ -37,3 +38,28 @@ def my_tickets(request):
     user = users.objects.get(user=u)
     ticket = BookTickets.objects.filter(user=user)
     return render(request,'users/my_ticket.html',{'ticket':ticket})
+
+
+
+def feedback(request):
+    form=FeedbackForm
+    u= request.user
+
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = u
+            obj.save()
+            messages.info(request,"thank you for your feedback...!!!")
+            return redirect('feedback_view')
+    else:
+        form = FeedbackForm()
+    return render(request,'users/feedback_add.html',{'form':form})
+
+
+
+def feedback_view(request):
+
+    u = Feedback.objects.filter(user=request.user)
+    return render(request,"users/feedback_view.html",{'feedback':u})

@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from Expo_app.models import CreateExpo, OnlineForm, BookTickets, Company
+from Expo_app.models import CreateExpo, OnlineForm, BookTickets, Company, BoothAllocation
 
 
 def View_expo(request):
@@ -35,4 +35,12 @@ def booking_status(request):
     u = Company.objects.get(user=request.user)
     data = OnlineForm.objects.filter(user=u)
 
-    return render(request,'admin/bookstatus.html',{"data":data})
+    return render(request,'company/bookstatus.html',{"data":data})
+
+
+def view_booth_user(request):
+    u = Company.objects.get(user=request.user)
+    print(u)
+    data = BoothAllocation.objects.filter(user=u)
+    print(data)
+    return render(request,"company/booth_view.html",{'data':data})

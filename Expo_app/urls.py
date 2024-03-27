@@ -27,6 +27,11 @@ urlpatterns = [
     path('bookings',admin_view.bookings,name='bookings'),
     path('approve_appointment/<int:id>/', admin_view.approve_appointment, name='approve_appointment'),
     path('reject_appointment/<int:id>/', admin_view.reject_appointment, name='reject_appointment'),
+    path('feedbacks', admin_view.feedbacks, name='feedbacks'),
+    path('reply_feedback/<int:id>/', admin_view.reply_feedback, name='reply_feedback'),
+    path('bookings_tkt',admin_view.bookings_tkt,name='bookings_tkt'),
+    path('add_booth',admin_view.add_booth,name='add_booth'),
+    path('view_booth',admin_view.view_booth,name='view_booth'),
 
 
 
@@ -34,9 +39,14 @@ urlpatterns = [
     path('cmp_View_expo',company_views.View_expo, name='cmp_View_expo'),
     path('take_appointment/<int:id>/',company_views.take_appointment,name="take_appointment"),
     path('booking_status',company_views.booking_status,name='booking_status'),
+    path('view_booth_user',company_views.view_booth_user,name='view_booth_user'),
 
     #users
     path('user_view_expo',users_view.View_expo,name= 'user_view_expo'),
     path("take_tickets/<int:id>/",users_view.take_tickets,name ="take_tickets"),
     path("my_tickets",users_view.my_tickets,name='my_tickets'),
+    path("feedback", users_view.feedback, name="feedback"),
+    path("feedback_view", users_view.feedback_view, name="feedback_view"),
+
+
 ]
