@@ -40,6 +40,7 @@ class CreateExpo(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     expo_code = models.CharField(max_length=6)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.expo_code

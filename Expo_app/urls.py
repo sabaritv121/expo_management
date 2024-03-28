@@ -33,6 +33,9 @@ urlpatterns = [
     path('add_booth',admin_view.add_booth,name='add_booth'),
     path('view_booth',admin_view.view_booth,name='view_booth'),
 
+    path('Enable/<int:id>/', admin_view.Enable, name='Enable'),
+    path('Disable/<int:id>/', admin_view.Disable,name='Disable'),
+
 
 
     #company

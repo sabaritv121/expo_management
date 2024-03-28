@@ -20,11 +20,14 @@
                 <p class="card-text">Start Date: {{ n.start_date }}</p>
                 <p class="card-text">End Date: {{ n.end_date }}</p>
                 <p class="card-text">Expo Code: {{ n.expo_code }}</p>
-
+                {% if n.status == 0 %}
+                <p style="color:red">Ticket not available</p>
+                {% elif n.status == 1 %}
                  <p>    <a href="{% url 'take_tickets' n.id %}">
                             <button type="button" class="btn btn-primary">Book Now</button>
                         </a>
                     </p>
+                {% endif %}
 <!--                <a href="{{ i.layout.url }}" download class="btn btn-primary">Download Layout</a>-->
             </div>
         </div>

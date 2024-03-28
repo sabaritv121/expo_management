@@ -42,6 +42,7 @@ class ExpoForm(forms.ModelForm):
     class Meta:
         model = CreateExpo
         fields = '__all__'
+        exclude = ('status',)
 
 class OnlineFormRegister(forms.ModelForm):
 

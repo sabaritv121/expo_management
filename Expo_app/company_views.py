@@ -26,7 +26,7 @@ def take_appointment(request, id):
             obj.expo_code = expo_code
             obj.save()
             messages.info(request, 'Request send Successfully')
-            return redirect('appointments')
+            return redirect('cmp_View_expo')
     return render(request, 'company/take_appointment.html', {'schedule': expo_code})
 
 

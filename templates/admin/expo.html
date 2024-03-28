@@ -28,6 +28,7 @@
                     <th scope="col">start date</th>
                      <th scope="col">end date</th>
                     <th scope="col">Expo code</th>
+                     <th scope="col">Booking Status</th>
 
                 </tr>
                 </thead>
@@ -45,6 +46,31 @@
                     <td>{{n.start_date}}</td>
                     <td>{{n.end_date}}</td>
                      <td>{{n.expo_code}}</td>
+
+
+
+                    {% if n.status == 0 %}
+                    <td style="color:red">
+                     Booking Not allowed
+
+                     </td >
+                     {% elif n.status == 1 %}
+                    <td style="color:green">Booking Allowed
+
+                     </td>
+                    {% endif %}
+                     <td>
+                        {% if n.status == 0 %}
+
+                            <a type="button" class="btn btn-success" href="{% url 'Enable' n.id %}">Enable
+
+
+                            {% elif n.status == 1 %}
+
+                        <a type="button" class="btn btn-success" href="{% url 'Disable' n.id %}">Disable
+
+                           {% endif %}
+                           </td>
 
 
 

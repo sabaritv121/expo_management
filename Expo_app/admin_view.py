@@ -88,3 +88,19 @@ def add_booth(request):
 def view_booth(request):
     data = BoothAllocation.objects.all()
     return render(request,"admin/booth_view.html",{'data':data})
+
+
+def Enable(request, id):
+    n = CreateExpo.objects.get(id=id)
+    n.status = 1
+    n.save()
+    messages.info(request, 'Ticket booking enabled')
+    return redirect('View_expo')
+
+
+def Disable(request, id):
+    n = CreateExpo.objects.get(id=id)
+    n.status = 0
+    n.save()
+    messages.info(request, 'Ticket booking disabled')
+    return redirect('View_expo')
