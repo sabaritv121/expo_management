@@ -43,6 +43,8 @@ urlpatterns = [
     path('take_appointment/<int:id>/',company_views.take_appointment,name="take_appointment"),
     path('booking_status',company_views.booking_status,name='booking_status'),
     path('view_booth_user',company_views.view_booth_user,name='view_booth_user'),
+    path('checkout/<int:id>/',company_views.checkout,name='checkout'),
+    path('payment/<int:id>/',company_views.payment,name='payment'),
 
     #users
     path('user_view_expo',users_view.View_expo,name= 'user_view_expo'),

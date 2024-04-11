@@ -44,3 +44,34 @@ def view_booth_user(request):
     data = BoothAllocation.objects.filter(user=u)
     print(data)
     return render(request,"company/booth_view.html",{'data':data})
+
+
+def checkout(request,id):
+    n = OnlineForm.objects.get(id=id)
+    if request.method == 'POST':
+        n = OnlineForm.objects.get(id=id)
+        n.status = 3
+        n.save()
+        messages.info(request, 'payment succesfull')
+        return redirect('booking_status')
+    #     amount = 1000  # Amount in cents
+    #     try:
+    #         intent = stripe.PaymentIntent.create(
+    #             amount=amount,
+    #             currency='usd',
+    #         )
+    #         return render(request, 'checkout.html', {'client_secret': intent.client_secret})
+    #     except stripe.error.CardError as e:
+    #         # Display error to the user
+    #         return render(request, 'error.html', {'error': e})
+
+    return render(request, 'company/checkout.html',{'n':n})
+
+
+
+def payment(request, id):
+    n = OnlineForm.objects.get(id=id)
+    n.status = 3
+    n.save()
+    messages.info(request, 'payment succesfull')
+    return redirect('booking_status')

@@ -44,12 +44,21 @@
                           <button type="button" class="btn btn-warning">Approval Pending</button>
                         {% elif n.status == 1 %}
                         <button type="button" class="btn btn-success">Booking Confirmed</button>
-                         {% else %}
+                          {% elif n.status == 2 %}
                         <button type="button" class="btn btn-danger">Sorry..no slots available</button>
  {% endif %}
 
 
 
+
+                    </td>
+                    <td>
+                        {% if n.status == 1 %}
+                        <a href = "{% url 'checkout' n.id %}" class="btn btn-danger">Pay online</a>
+
+                        {% elif n.status == 3 %}
+                         <h6>Confirmed and Paid</h6>
+                        {% endif %}
                     </td>
 
 

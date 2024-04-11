@@ -55,8 +55,11 @@
 
                         <button type="button" class="btn btn-success">Approved</button>
 
-                        {% else %}
+                        {% elif n.status == 2 %}
                         <button type="button" class="btn btn-danger">Rejected</button>
+
+                        {% elif n.status == 3 %}
+                        <h6>Booking amount Recieved</h6>
                         {% endif %}
                     </td>
                 </tr>
