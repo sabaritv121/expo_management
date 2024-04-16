@@ -50,11 +50,13 @@ class OnlineFormRegister(forms.ModelForm):
             model = OnlineForm
             fields = '__all__'
 
+
 class FeedbackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
         fields = ('feedback',)
+
 
 class BoothAllocationForm(forms.ModelForm):
     class Meta:

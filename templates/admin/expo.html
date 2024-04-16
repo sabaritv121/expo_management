@@ -6,7 +6,7 @@
 
 
 
-<div class="col-lg-10">
+<div class="col-lg-12">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
         {{message}}
@@ -29,6 +29,8 @@
                      <th scope="col">end date</th>
                     <th scope="col">Expo code</th>
                      <th scope="col">Booking Status</th>
+                     <th scope="col">Remove</th>
+                          <th scope="col">Edit</th>
 
                 </tr>
                 </thead>
@@ -39,7 +41,7 @@
                     <td>{{n.venue}}</td>
 
                     <td>
-                      <a href="{{ i.layout.url }}" download>
+                      <a href="{{ n.layout.url }}" download>
         <button>Download</button>
         </a>
                     </td>
@@ -72,6 +74,9 @@
                            {% endif %}
                            </td>
 
+                        <td>
+                             <a type="button" class="btn btn-secondary" href="{% url 'Expo_update' n.id %}">Update
+                        </td>
 
 
 

@@ -24,6 +24,7 @@ urlpatterns = [
     path("users_approval/<int:id>/",admin_view.users_approval,name='users_approval'),
     path('Expo_create',admin_view.Expo_create,name = "Expo_create"),
     path('View_expo',admin_view.View_expo,name = 'View_expo'),
+    path('Expo_update/<int:id>/',admin_view.Expo_update,name='Expo_update'),
     path('bookings',admin_view.bookings,name='bookings'),
     path('approve_appointment/<int:id>/', admin_view.approve_appointment, name='approve_appointment'),
     path('reject_appointment/<int:id>/', admin_view.reject_appointment, name='reject_appointment'),

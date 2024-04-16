@@ -29,6 +29,23 @@ def Expo_create(request):
     return render(request,'admin/expo_create.html',{'form':form})
 
 
+
+def Expo_update(request,id):
+
+    n = CreateExpo.objects.get(id=id)
+    if request.method == 'POST':
+        form = ExpoForm(request.POST,request.FILES or None, instance=n)
+        if form.is_valid():
+            form.save()
+            return redirect('View_expo')
+    else:
+        form = ExpoForm(instance=n)
+    return render(request, 'admin/expo_update.html', {'form': form})
+
+
+
+
+
 def View_expo(request):
     data = CreateExpo.objects.all()
     return render(request,'admin/expo.html',{'data':data})
@@ -104,3 +121,5 @@ def Disable(request, id):
     n.save()
     messages.info(request, 'Ticket booking disabled')
     return redirect('View_expo')
+
+
