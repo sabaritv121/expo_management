@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -48,11 +49,28 @@ class CreateExpo(models.Model):
 
 
 #online form submition
+
+
+
 class OnlineForm(models.Model):
+    data = [
+
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+
+    ]
     user = models.ForeignKey(Company, on_delete=models.CASCADE)
     expo_code = models.ForeignKey(CreateExpo, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
     name = models.CharField(max_length=20)
+    number_of_booths = models.CharField(choices=data,max_length=20,default="1")
+
+    def __str__(self):
+        return self.user.company_name
+
 
 
 #book tickets
@@ -67,8 +85,8 @@ class BookTickets(models.Model):
 
 #booth allocation table
 class BoothAllocation(models.Model):
-    expocode = models.ForeignKey(CreateExpo, on_delete=models.CASCADE)
-    user = models.ForeignKey(Company, on_delete=models.CASCADE)
+    expocode = models.ForeignKey(OnlineForm, on_delete=models.CASCADE)
+    number = models.IntegerField()
     Booth_id = models.CharField(max_length=6)
 
 

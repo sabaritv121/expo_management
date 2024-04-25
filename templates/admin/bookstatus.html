@@ -7,7 +7,7 @@
 
 
 
-<div class="col-lg-10">
+<div class="col-lg-14">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
         {{message}}
@@ -24,10 +24,11 @@
                 <tr>
                     <th scope="col">SI No</th>
                     <th scope="col">Venue</th>
-
+                    <th scope="col">Company name</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
                     <th scope="col">Expo code</th>
+                     <th scope="col">booths</th>
                     <th scope="col">Status</th>
 
                 </tr>
@@ -39,9 +40,11 @@
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{n.expo_code.venue}}</td>
+                     <td>{{n.user.company_name}}</td>
                     <td>{{n.expo_code.start_date}}</td>
                     <td>{{n.expo_code.end_date}}</td>
                     <td>{{n.expo_code.expo_code}}</td>
+                     <td>{{n.number_of_booths}}</td>
                  <td>
                         {% if n.status == 0 %}
                         <a type="button" class="btn btn-success" href="{% url 'approve_appointment' n.id %} ">Accept</a>
@@ -62,6 +65,19 @@
                         <h6>Booking amount Recieved</h6>
                         {% endif %}
                     </td>
+
+                     <td>
+
+                     {% if n.status == 1 %}
+                    <a href="{% url 'add_booth' n.id %}" class="btn btn-success">Allocate booths</a>
+                       {% elif n.status == 2 %}
+
+                         Booth allocated
+                    {% endif %}
+
+
+                    </td>
+
                 </tr>
 
                 {% empty %}

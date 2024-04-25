@@ -31,7 +31,8 @@ urlpatterns = [
     path('feedbacks', admin_view.feedbacks, name='feedbacks'),
     path('reply_feedback/<int:id>/', admin_view.reply_feedback, name='reply_feedback'),
     path('bookings_tkt',admin_view.bookings_tkt,name='bookings_tkt'),
-    path('add_booth',admin_view.add_booth,name='add_booth'),
+    # path('add_booth',admin_view.add_booth,name='add_booth'),
+    path('add_booth/<int:id>/', admin_view.add_booth, name='add_booth'),
     path('view_booth',admin_view.view_booth,name='view_booth'),
 
     path('Enable/<int:id>/', admin_view.Enable, name='Enable'),

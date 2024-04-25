@@ -3,6 +3,11 @@
 {% extends 'Company_dash.html' %}
 
 {% block content %}
+
+
+
+
+
 <form method ="post">
 {% csrf_token %}
 <div class="col-lg-8">
@@ -27,11 +32,37 @@
 
                 </div>
 
+
+
                  <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
     <input type="text" class="form-control" name="uname" id="exampleInputEmail1"  placeholder="Enter username">
     <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
   </div>
+<!--                            <div class="form-group">-->
+<!--    <label for="exampleInputEmail1">Number Of Booths</label>-->
+<!--    <input type="Number" class="form-control" name="num" id="exampleInputEmail2"  placeholder="Enter number of booths">-->
+<!--    <small id="emailHelp1" class="form-text text-muted">We'll never share your username with anyone else.</small>-->
+<!--  </div>-->
+<div class="form-group">
+    <label for="exampleInputEmail1">Number Of Booths</label>
+    <input type="number" class="form-control" name="num" id="exampleInputEmail2" placeholder="Enter number of booths">
+    <small id="emailHelp1" class="form-text text-muted">Maximum 5 booths were allowed </small>
+</div>
+
+<script>
+    document.getElementById('exampleInputEmail2').addEventListener('input', function() {
+        var numBooths = parseInt(this.value, 10);
+
+        if (numBooths > 5) {
+            alert('More than 5 booths are not allowed.');
+            this.value = ''; // Clear the input field
+        }
+    });
+</script>
+
+
+
 
                 <div class="form-actions form-group ">
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -48,3 +79,5 @@
 </div>
 </form>
 {% endblock %}
+
+

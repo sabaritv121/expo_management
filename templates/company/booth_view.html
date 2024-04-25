@@ -19,7 +19,7 @@
                 <tr>
                     <th scope="col">SI No</th>
                     <th scope="col">Expo code</th>
-                    <th scope="col">Company</th>
+                    <th scope="col">Number of booth</th>
                     <th scope="col">Booth ID</th>
 
 
@@ -34,9 +34,9 @@
                 {% for n in data %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{n.expocode}}</td>
+                    <td>{{n.expocode.expo_code}}</td>
 
-                    <td>{{n.user}}</td>
+                    <td>{{n.expocode.number_of_booths}}</td>
                     <td>{{n.Booth_id}}</td>
 
 

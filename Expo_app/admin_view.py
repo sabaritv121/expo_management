@@ -93,14 +93,54 @@ def bookings_tkt(request):
     return render(request, 'admin/bookings.html', {'ticket': ticket,'bookings':bookings})
 
 
-def add_booth(request):
-    form = BoothAllocationForm()
+# def add_booth(request):
+#     form = BoothAllocationForm()
+#     if request.method == 'POST':
+#         form = BoothAllocationForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('view_booth')
+#     return render(request,'admin/Booth.html',{'form':form})
+
+
+def add_booth(request, id):
+    data = OnlineForm.objects.get(id=id)
+
+    # print(u)
+    number = data.number_of_booths
+    print(number)
+
+    Booth_id = request.POST.get('booth')
+    print(Booth_id)
+
+
+
+
     if request.method == 'POST':
-        form = BoothAllocationForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
+            obj = BoothAllocation()
+            obj.expocode = data
+            obj.number = number
+            obj.Booth_id =Booth_id
+
+            obj.save()
+            data.status = 2
+            data.save()
+            messages.info(request, 'Booth allocated Successfully')
             return redirect('view_booth')
-    return render(request,'admin/Booth.html',{'form':form})
+    return render(request, 'admin/booth_add.html', {'schedule': data})
+
+
+# def add_booth(request,id):
+#     data = OnlineForm.object.get(id=id)
+#     print(data)
+#     form = BoothAllocationForm()
+#     if request.method == 'POST':
+#         form = BoothAllocationForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('view_booth')
+#     return render(request,'admin/Booth.html',{'form':form})
+
 
 def view_booth(request):
     data = BoothAllocation.objects.all()

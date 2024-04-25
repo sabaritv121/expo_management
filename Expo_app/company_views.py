@@ -21,7 +21,9 @@ def take_appointment(request, id):
         if request.method == 'POST':
             obj = OnlineForm()
             name = request.POST.get("uname")
+            number = request.POST.get("num")
             obj.name = name
+            obj.number_of_booths = number
             obj.user = u
             obj.expo_code = expo_code
             obj.save()
@@ -41,7 +43,7 @@ def booking_status(request):
 def view_booth_user(request):
     u = Company.objects.get(user=request.user)
     print(u)
-    data = BoothAllocation.objects.filter(user=u)
+    data = BoothAllocation.objects.filter(expocode__user =u)
     print(data)
     return render(request,"company/booth_view.html",{'data':data})
 
@@ -54,16 +56,7 @@ def checkout(request,id):
         n.save()
         messages.info(request, 'payment succesfull')
         return redirect('booking_status')
-    #     amount = 1000  # Amount in cents
-    #     try:
-    #         intent = stripe.PaymentIntent.create(
-    #             amount=amount,
-    #             currency='usd',
-    #         )
-    #         return render(request, 'checkout.html', {'client_secret': intent.client_secret})
-    #     except stripe.error.CardError as e:
-    #         # Display error to the user
-    #         return render(request, 'error.html', {'error': e})
+
 
     return render(request, 'company/checkout.html',{'n':n})
 
