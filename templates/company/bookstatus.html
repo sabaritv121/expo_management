@@ -44,7 +44,8 @@
                         {% if n.status == 0 %}
                           <button type="button" class="btn btn-warning">Approval Pending</button>
                         {% elif n.status == 1 %}
-                        <button type="button" class="btn btn-success">Booking Confirmed</button>
+<!--                        <button type="button" class="btn btn-success">Booking Confirmed</button>-->
+                        Pay advance to allocate booth
                           {% elif n.status == 2 %}
                         <button type="button" class="btn btn-danger">Sorry..no slots available</button>
  {% endif %}
@@ -58,7 +59,9 @@
                         <a href = "{% url 'checkout' n.id %}" class="btn btn-danger">Pay online</a>
 
                         {% elif n.status == 3 %}
-                         <h6>Confirmed and Paid</h6>
+                         <h6>Booth allocation in progress</h6>
+                          {% elif n.status == 4 %}
+                         <h6>Booth allocated</h6>
                         {% endif %}
                     </td>
 

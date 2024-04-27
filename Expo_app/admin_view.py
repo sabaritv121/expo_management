@@ -123,7 +123,7 @@ def add_booth(request, id):
             obj.Booth_id =Booth_id
 
             obj.save()
-            data.status = 2
+            data.status = 4
             data.save()
             messages.info(request, 'Booth allocated Successfully')
             return redirect('view_booth')

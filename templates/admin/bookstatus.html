@@ -68,9 +68,9 @@
 
                      <td>
 
-                     {% if n.status == 1 %}
+                     {% if n.status == 3 %}
                     <a href="{% url 'add_booth' n.id %}" class="btn btn-success">Allocate booths</a>
-                       {% elif n.status == 2 %}
+                       {% elif n.status == 4 %}
 
                          Booth allocated
                     {% endif %}
